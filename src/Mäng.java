@@ -1,5 +1,3 @@
-// Õppis RyiSnow YouTube'i mänguarendus õpetuste järgi: https://youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -85,12 +83,12 @@ public class Mäng {
         algusNupuPaneel.setVisible(false);
 
         peamineTekstipaneel = new JPanel();
-        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
+        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
         peamineTekstipaneel.setBackground(Color.black);
         konteiner.add(peamineTekstipaneel);
 
         peamineTekstiRuum = new JTextArea();
-        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
+        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
         peamineTekstiRuum.setBackground(Color.black);
         peamineTekstiRuum.setForeground(Color.white);
         peamineTekstiRuum.setFont(tavalineFont);
@@ -264,6 +262,7 @@ public class Mäng {
         asukoht = "võitlus";
         peamineTekstiRuum.setText("Mäekolli elud: " + koletiseHP + "\nMida sa peale hakkad?");
         valik1.setText("Ründa.");
+        valik2.setVisible(true);
         valik2.setText("Põgene.");
         valik3.setVisible(false);
         valik4.setVisible(false);

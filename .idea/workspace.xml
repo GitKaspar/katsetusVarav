@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a562ccf2-68af-44f5-a4b5-d8e7ab1e85c6" name="Changes" comment="Algne commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mäng.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mäng.java" afterDir="false" />
-    </list>
+    <list default="true" id="a562ccf2-68af-44f5-a4b5-d8e7ab1e85c6" name="Changes" comment="Algne commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684084994693</updated>
-      <workItem from="1684084996378" duration="8357000" />
+      <workItem from="1684084996378" duration="8906000" />
     </task>
     <task id="LOCAL−00001" summary="Algne commit">
       <created>1684085079971</created>
@@ -60,7 +57,19 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1684085079971</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Algne commit">
+      <created>1684096267981</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1684096267981</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Algne commit">
+      <created>1684096279716</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1684096279716</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

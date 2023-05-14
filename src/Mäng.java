@@ -365,7 +365,7 @@ public class Mäng {
                             break;
                         case "v2":
                             if (mängijaHP < 1) {
-                                lõpp();
+                                kaotus();
                             } else {
                                 ründaValvurit();
                             } break;

@@ -214,6 +214,8 @@ public class Mäng {
     }
 
     public void linnaVärav() {
+        
+        // SIIA SOBIKS PILT. Vt Lennarti faili sisse töötamise eeskuju.
         asukoht = "linnaVärav";
         peamineTekstiRuum.setText("Sa oled linnavärava ees.\nÜks valvur seisab su ees.\nMida sa teed?");
         valik1.setVisible(true);
@@ -227,6 +229,8 @@ public class Mäng {
     }
 
     public void räägiValvuriga() {
+        
+        //Valvurist pilt, kui jaksu jääb? väravaga kokku?
         asukoht = "räägiValvuriga";
         peamineTekstiRuum.setText("Valvur: Terekest!\nSinusugust ma küll varem siinkandis näinud ei ole.\nVabandan, aga meil ei lubata võõraid linna.");
         valik1.setText("Jätka.");
@@ -248,6 +252,8 @@ public class Mäng {
 
     // Keskne punkt mängus, kust saab kõikjale edasi liikuda.
     public void risttee() {
+        
+        // Siia oleks vaja pilti.
         asukoht = "risttee";
         peamineTekstiRuum.setText("Oled ristteel.\nLinn jääb lõunasse.");
 
@@ -265,6 +271,8 @@ public class Mäng {
     // Jõe ääres saab puhata ja elusid taastada.
 
     public void põhi() {
+        
+        // Pilt jõest?
         asukoht = "põhi";
         peamineTekstiRuum.setText("Jõuad jõe äärde. Jood vett ja puhkad jõekaldal.\n(Su elujõud taastub kahe võrra.)");
         mängijaHP = mängijaHP + 2;
@@ -277,6 +285,8 @@ public class Mäng {
 
     // Siit saab mõõga, mis aitab koletist alistada.
     public void ida() {
+        
+        // Pilt mõõgast padrikus?
         asukoht = "ida";
         peamineTekstiRuum.setText("Sattusid metsa ja leidsid mõõga.\n(Sain enda valdusesse uue relva: mõõk.)");
         relv = "Mõõk";
@@ -290,6 +300,8 @@ public class Mäng {
 
     // Siin on koletis, kellega peab võitlema.
     public void lääs() {
+        
+        // Pilt mäekollist?
         asukoht = "lääs";
         peamineTekstiRuum.setText("Juhtud kokku mäekolliga.");
         valik1.setText("Võitle.");
@@ -363,6 +375,8 @@ public class Mäng {
      * Kaotad siis, kui koletis või valvur su ära tapavad.
      */
     public void kaotus() {
+        
+        // Kolba pilt?
         asukoht = "kaotus";
         peamineTekstiRuum.setText("Oled surnud.\nMÄNG LÄBI");
         valik1.setVisible(false);

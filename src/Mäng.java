@@ -180,10 +180,13 @@ public class Mäng {
     public void linnaVärav() {
         asukoht = "linnaVärav";
         peamineTekstiRuum.setText("Sa oled linnavärava ees.\nÜks valvur seisab su ees.\nMida sa teed?");
+        valik1.setVisible(true);
+        valik2.setVisible(true);
+        valik3.setVisible(true);
         valik1.setText("Räägi valvuriga.");
         valik2.setText("Ründa valvurit.");
         valik3.setText("Lahku.");
-        valik4.setText("");
+        valik4.setVisible(false);
 
     }
 
@@ -191,9 +194,9 @@ public class Mäng {
         asukoht = "räägiValvuriga";
         peamineTekstiRuum.setText("Valvur: Terekest!\nSinusugust ma küll varem siinkandis näinud ei ole.\nVabandan, aga meil ei lubata võõraid linna.");
         valik1.setText("Jätka.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
     }
 
     public void ründaValvurit() {
@@ -202,14 +205,19 @@ public class Mäng {
         mängijaHP = mängijaHP - 3;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Jätka.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
     }
 
     public void risttee() {
         asukoht = "risttee";
         peamineTekstiRuum.setText("Oled ristteel.\nLinn jääb lõunasse.");
+
+        valik1.setVisible(true);
+        valik2.setVisible(true);
+        valik3.setVisible(true);
+        valik4.setVisible(true);
 
         valik1.setText("Mine põhja suunas.");
         valik2.setText("Mine ida suunas.");
@@ -223,9 +231,9 @@ public class Mäng {
         mängijaHP = mängijaHP + 2;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Naase ristteele.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
     }
 
     public void ida() {
@@ -234,9 +242,9 @@ public class Mäng {
         relv = "Mõõk";
         relvaSildiNimi.setText(relv);
         valik1.setText("Naase ristteele.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
 
     }
 
@@ -245,8 +253,8 @@ public class Mäng {
         peamineTekstiRuum.setText("Juhtud kokku mäekolliga.");
         valik1.setText("Võitle.");
         valik2.setText("Põgene.");
-        valik3.setText("");
-        valik4.setText("");
+        valik3.setVisible(false);
+        valik4.setVisible(false);
 
     }
 
@@ -255,8 +263,8 @@ public class Mäng {
         peamineTekstiRuum.setText("Mäekolli elud: " + koletiseHP + "\nMida sa peale hakkad?");
         valik1.setText("Ründa.");
         valik2.setText("Põgene.");
-        valik3.setText("");
-        valik4.setText("");
+        valik3.setVisible(false);
+        valik4.setVisible(false);
     }
 
     public void mängijaRündab() {
@@ -273,9 +281,9 @@ public class Mäng {
         koletiseHP = koletiseHP - mängijaKahju;
 
         valik1.setText("Jätka.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
 
     }
 
@@ -291,9 +299,9 @@ public class Mäng {
         hpSildiNumber.setText(String.valueOf(mängijaHP));
 
         valik1.setText("Jätka.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
 
 
     }
@@ -303,9 +311,9 @@ public class Mäng {
         peamineTekstiRuum.setText("Alistasid koletise.\nLeiad koletise korjuselt sõrmuse.\n\n(Omandasid hõbedase sõrmuse.)");
         hõbesõrmus = 1;
         valik1.setText("Naase ristteele.");
-        valik2.setText("");
-        valik3.setText("");
-        valik4.setText("");
+        valik2.setVisible(false);
+        valik3.setVisible(false);
+        valik4.setVisible(false);
     }
 
     public void kaotus() {
@@ -355,8 +363,11 @@ public class Mäng {
                             }
                             break;
                         case "v2":
-                            ründaValvurit();
-                            break;
+                            if (mängijaHP < 1) {
+                                lõpp();
+                            } else {
+                                ründaValvurit();
+                            } break;
                         case "v3":
                             risttee();
                             break;

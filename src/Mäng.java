@@ -8,14 +8,14 @@ public class Mäng {
 
     JFrame mänguAken;
     Container konteiner;
-    JPanel pealkirjaPaneel, algusNupuPaneel, peamineTekstipaneel, valikunupuPaneel, mängijaPaneel;
-    JLabel pealkirjaSilt, hpSilt, hpSildiNumber, relvaSilt, relvaSildiNimi;
+    JPanel pealkirjaPaneel, algusNupuPaneel, peamineTekstipaneel, valikunupuPaneel, mängijaPaneel, pildiPaneel;
+    JLabel pealkirjaSilt, hpSilt, hpSildiNumber, relvaSilt, relvaSildiNimi, pildiSilt;
     Font pealkirjaFont = new Font("Comic Sans MS", Font.PLAIN, 90);
     Font tavalineFont = new Font("Comic Sans MS", Font.PLAIN, 28);
     JButton algusNupp, valik1, valik2, valik3, valik4;
     JTextArea peamineTekstiRuum;
     int mängijaHP, koletiseHP, hõbesõrmus, kõrgus, laius;
-    double xSuhe, ySuhe;
+    double xSuhe, ySuhe; // Nende muutujate järgi seatakse kasutajaliidese elementide suurus
     String relv, asukoht;
 
     PeaEkraaniKäsitleja peKäsitleja = new PeaEkraaniKäsitleja();
@@ -45,7 +45,6 @@ public class Mäng {
 
         pealkirjaPaneel = new JPanel();
         pealkirjaPaneel.setBounds((int)(100*xSuhe), (int)(100*ySuhe), (int)(600*xSuhe), (int)(150*ySuhe)); // x ja y märgivad paneeli alguspunkti
-        // 3/4 laius ja kõrgus 1/4 - 1280*720 puhul: 960 Ja 180
         pealkirjaPaneel.setBackground(Color.black);
 
         ImageIcon pilt = new ImageIcon("pealkiri.png");
@@ -83,12 +82,12 @@ public class Mäng {
         algusNupuPaneel.setVisible(false);
 
         peamineTekstipaneel = new JPanel();
-        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
+        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(330*xSuhe), (int)(100*ySuhe));
         peamineTekstipaneel.setBackground(Color.black);
         konteiner.add(peamineTekstipaneel);
 
         peamineTekstiRuum = new JTextArea();
-        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
+        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(330*xSuhe), (int)(100*ySuhe));
         peamineTekstiRuum.setBackground(Color.black);
         peamineTekstiRuum.setForeground(Color.white);
         peamineTekstiRuum.setFont(tavalineFont);
@@ -161,6 +160,20 @@ public class Mäng {
         relvaSildiNimi.setFont(tavalineFont);
         relvaSildiNimi.setForeground(Color.white);
         mängijaPaneel.add(relvaSildiNimi);
+
+        ImageIcon lennart = new ImageIcon("lennart.png");
+        Image kohandamiseks = lennart.getImage();
+        Image kohandatudPilt = kohandamiseks.getScaledInstance((int)(350*xSuhe), (int)(350*ySuhe), Image.SCALE_SMOOTH);
+        pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
+
+        pildiPaneel = new JPanel();
+        pildiPaneel.setBounds((int)(400*xSuhe), (int)(90*ySuhe), (int)(350*xSuhe), (int)(350*ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBackground(Color.black);
+        pildiPaneel.add(pildiSilt);
+        konteiner.add(pildiPaneel);
+
+
+
 
         mängijaEttevalmistus();
 

@@ -36,16 +36,19 @@ public class Mäng {
         mänguAken.setLayout(null); // Välistab vaikeasetuse kasutamise.
         konteiner = mänguAken.getContentPane();
 
+
         pealkirjaPaneel = new JPanel();
-        pealkirjaPaneel.setBounds(100, 100, 600, 150); // x ja y märgivad paneeli alguspunkti
-        // 3/4 laius ja kõrgus 1/4 - 1280*720 puhul: 960 Ja 180
+        pealkirjaPaneel.setBounds(100, 100, 600, 150);
         pealkirjaPaneel.setBackground(Color.black);
-        pealkirjaSilt = new JLabel("VÄRAV");
-        pealkirjaSilt.setForeground(Color.white); // Probleem, kui muudan paneeli valgeks ja teksti mustaks - ei kuva
+        ImageIcon pilt = new ImageIcon("lennart.png");
+        Image pildiks = pilt.getImage();
+        Image suurusMuudetud = pildiks.getScaledInstance(600, 150, Image.SCALE_SMOOTH);
+        pealkirjaSilt = new JLabel(new ImageIcon(suurusMuudetud));
+        pealkirjaSilt.setForeground(Color.white);
         pealkirjaSilt.setFont(pealkirjaFont);
 
         algusNupuPaneel = new JPanel();
-        algusNupuPaneel.setBounds(300, 400, 200, 100); // 480, 280, 320, 120
+        algusNupuPaneel.setBounds(300, 400, 200, 100);
         algusNupuPaneel.setBackground(Color.black);
 
         algusNupp = new JButton("ALUSTA");
@@ -156,7 +159,6 @@ public class Mäng {
 
     }
 
-
     public void mängijaEttevalmistus() {
         mängijaHP = 15;
         koletiseHP = 20;
@@ -170,13 +172,10 @@ public class Mäng {
     public void linnaVärav() {
         asukoht = "linnaVärav";
         peamineTekstiRuum.setText("Sa oled linnavärava ees.\nÜks valvur seisab su ees.\nMida sa teed?");
-        valik1.setVisible(true);
-        valik2.setVisible(true);
-        valik3.setVisible(true);
-        valik1.setText("Räägi valguvriga.");
+        valik1.setText("Räägi valvuriga.");
         valik2.setText("Ründa valvurit.");
         valik3.setText("Lahku.");
-        valik4.setVisible(false);
+        valik4.setText("");
 
     }
 
@@ -184,9 +183,9 @@ public class Mäng {
         asukoht = "räägiValvuriga";
         peamineTekstiRuum.setText("Valvur: Terekest!\nSinusugust ma küll varem siinkandis näinud ei ole.\nVabandan, aga meil ei lubata võõraid linna.");
         valik1.setText("Jätka.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
     }
 
     public void ründaValvurit() {
@@ -195,17 +194,14 @@ public class Mäng {
         mängijaHP = mängijaHP - 3;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Jätka.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
     }
 
     public void risttee() {
         asukoht = "risttee";
         peamineTekstiRuum.setText("Oled ristteel.\nLinn jääb lõunasse.");
-        valik2.setVisible(true);
-        valik3.setVisible(true);
-        valik4.setVisible(true);
 
         valik1.setText("Mine põhja suunas.");
         valik2.setText("Mine ida suunas.");
@@ -219,9 +215,9 @@ public class Mäng {
         mängijaHP = mängijaHP + 2;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Naase ristteele.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
     }
 
     public void ida() {
@@ -230,9 +226,9 @@ public class Mäng {
         relv = "Mõõk";
         relvaSildiNimi.setText(relv);
         valik1.setText("Naase ristteele.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
 
     }
 
@@ -241,8 +237,8 @@ public class Mäng {
         peamineTekstiRuum.setText("Juhtud kokku mäekolliga.");
         valik1.setText("Võitle.");
         valik2.setText("Põgene.");
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik3.setText("");
+        valik4.setText("");
 
     }
 
@@ -251,9 +247,8 @@ public class Mäng {
         peamineTekstiRuum.setText("Mäekolli elud: " + koletiseHP + "\nMida sa peale hakkad?");
         valik1.setText("Ründa.");
         valik2.setText("Põgene.");
-        valik3.setVisible(false);
-        valik4.setVisible(false);
-
+        valik3.setText("");
+        valik4.setText("");
     }
 
     public void mängijaRündab() {
@@ -270,9 +265,9 @@ public class Mäng {
         koletiseHP = koletiseHP - mängijaKahju;
 
         valik1.setText("Jätka.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
 
     }
 
@@ -282,32 +277,32 @@ public class Mäng {
 
         koletiseKahju = new Random().nextInt(6);
 
-        peamineTekstiRuum.setText("Koletis ründas sind ja soortias " + koletiseKahju + " punkti kahju.");
+        peamineTekstiRuum.setText("Koletis ründas sind ja tekitas " + koletiseKahju + " punkti kahju.");
 
         mängijaHP = mängijaHP - koletiseKahju;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
 
         valik1.setText("Jätka.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
 
 
     }
 
     public void võit() {
         asukoht = "võit";
-        peamineTekstiRuum.setText("Alistasid koletise.\nLeiad koletise korjuselt sõrmuse.\n(Omandasid hõbedase sõrmuse.)");
+        peamineTekstiRuum.setText("Alistasid koletise.\nLeiad koletise korjuselt sõrmuse.\n\n(Omandasid hõbedase sõrmuse.)");
         hõbesõrmus = 1;
         valik1.setText("Naase ristteele.");
-        valik2.setVisible(false);
-        valik3.setVisible(false);
-        valik4.setVisible(false);
+        valik2.setText("");
+        valik3.setText("");
+        valik4.setText("");
     }
 
     public void kaotus() {
         asukoht = "kaotus";
-        peamineTekstiRuum.setText("Oled surnud.\nMÄNG LÄBI.");
+        peamineTekstiRuum.setText("Oled surnud.\nMÄNG LÄBI");
         valik1.setVisible(false);
         valik2.setVisible(false);
         valik3.setVisible(false);
@@ -318,7 +313,7 @@ public class Mäng {
 
     public void lõpp() {
         asukoht = "lõpp";
-        peamineTekstiRuum.setText("Valvur: Sul on sõrmus. Alistasid sa mäekolli?\nLinnapea tahab sind kindlasti selle eest permeerida.\n" +
+        peamineTekstiRuum.setText("Valvur: Sul on sõrmus! Alistasid sa mäekolli?\nLinnapea tahab sind kindlasti selle eest permeerida.\n" +
                 "Järgne mulle.\n(Valvur avab värava ja juhatab su linna.)\nMÄNG LÄBI");
         valik1.setVisible(false);
         valik2.setVisible(false);
@@ -332,22 +327,24 @@ public class Mäng {
         @Override
         public void actionPerformed(ActionEvent e) {
             looMänguEkraan();
-
         }
     }
 
     public class ValikuKäsitleja implements ActionListener {
-        @Override
+
         public void actionPerformed(ActionEvent e) {
+
             String sinuValik = e.getActionCommand();
+
             switch (asukoht) {
                 case "linnaVärav":
                     switch (sinuValik) {
                         case "v1":
-                            if (hõbesõrmus == 1)
+                            if (hõbesõrmus == 1) {
                                 lõpp();
-                            else
+                            } else {
                                 räägiValvuriga();
+                            }
                             break;
                         case "v2":
                             ründaValvurit();
@@ -363,12 +360,14 @@ public class Mäng {
                             linnaVärav();
                             break;
                     }
+                    break;
                 case "ründaValvurit":
                     switch (sinuValik) {
                         case "v1":
                             linnaVärav();
                             break;
                     }
+                    break;
                 case "risttee":
                     switch (sinuValik) {
                         case "v1":
@@ -384,18 +383,21 @@ public class Mäng {
                             lääs();
                             break;
                     }
+                    break;
                 case "põhi":
                     switch (sinuValik) {
                         case "v1":
                             risttee();
                             break;
                     }
+                    break;
                 case "ida":
                     switch (sinuValik) {
                         case "v1":
                             risttee();
                             break;
                     }
+                    break;
                 case "lääs":
                     switch (sinuValik) {
                         case "v1":
@@ -405,6 +407,7 @@ public class Mäng {
                             risttee();
                             break;
                     }
+                    break;
                 case "võitlus":
                     switch (sinuValik) {
                         case "v1":
@@ -414,34 +417,35 @@ public class Mäng {
                             risttee();
                             break;
                     }
+                    break;
                 case "mängijaRündab":
                     switch (sinuValik) {
-                        case "v1": {
-                            if (koletiseHP < 0) {
+                        case "v1":
+                            if (koletiseHP < 1) {
                                 võit();
                             } else {
                                 koletisRündab();
                             }
                             break;
-                        }
-                        case "koletisRündab":
-                            switch (sinuValik) {
-                                case "v1": {
-                                    if (mängijaHP < 1) {
-                                        kaotus();
-                                    } else {
-                                        võitle();
-                                    }
-                                    break;
-                                }
-                                case "võit":
-                                    switch (sinuValik) {
-                                        case "v1":
-                                            risttee();
-                                            break;
-                                    }
-                            }
                     }
+                    break;
+                case "koletisRündab":
+                    switch (sinuValik) {
+                        case "v1":
+                            if (mängijaHP < 1) {
+                                kaotus();
+                            } else {
+                                võitle();
+                            }
+                            break;
+                    }
+                    break;
+                case "võit":
+                    switch (sinuValik) {
+                        case "c1":
+                            risttee();
+                    }
+                    break;
             }
         }
     }

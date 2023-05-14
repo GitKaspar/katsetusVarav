@@ -83,12 +83,12 @@ public class Mäng {
         algusNupuPaneel.setVisible(false);
 
         peamineTekstipaneel = new JPanel();
-        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
+        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
         peamineTekstipaneel.setBackground(Color.black);
         konteiner.add(peamineTekstipaneel);
 
         peamineTekstiRuum = new JTextArea();
-        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
+        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(200*ySuhe));
         peamineTekstiRuum.setBackground(Color.black);
         peamineTekstiRuum.setForeground(Color.white);
         peamineTekstiRuum.setFont(tavalineFont);

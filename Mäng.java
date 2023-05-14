@@ -14,7 +14,8 @@ public class Mäng {
     Font tavalineFont = new Font("Comic Sans MS", Font.PLAIN, 28);
     JButton algusNupp, valik1, valik2, valik3, valik4;
     JTextArea peamineTekstiRuum;
-    int mängijaHP, koletiseHP, hõbesõrmus;
+    int mängijaHP, koletiseHP, hõbesõrmus, kõrgus, laius;
+    double xSuhe, ySuhe;
     String relv, asukoht;
 
     PeaEkraaniKäsitleja peKäsitleja = new PeaEkraaniKäsitleja();
@@ -30,22 +31,33 @@ public class Mäng {
     public Mäng() {
 
         mänguAken = new JFrame();
-        mänguAken.setSize(800, 600);
+        mänguAken.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mänguAken.setVisible(true);
+        mänguAken.setResizable(false);
         mänguAken.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mänguAken.getContentPane().setBackground(Color.black);
         mänguAken.setLayout(null); // Välistab vaikeasetuse kasutamise.
+        laius = mänguAken.getWidth();
+        kõrgus = mänguAken.getHeight();
+        xSuhe = (double)laius / 800;
+        ySuhe = (double) kõrgus / 600;
         konteiner = mänguAken.getContentPane();
 
         pealkirjaPaneel = new JPanel();
-        pealkirjaPaneel.setBounds(100, 100, 600, 150); // x ja y märgivad paneeli alguspunkti
+        pealkirjaPaneel.setBounds((int)(100*xSuhe), (int)(100*ySuhe), (int)(600*xSuhe), (int)(150*ySuhe)); // x ja y märgivad paneeli alguspunkti
         // 3/4 laius ja kõrgus 1/4 - 1280*720 puhul: 960 Ja 180
         pealkirjaPaneel.setBackground(Color.black);
-        pealkirjaSilt = new JLabel("VÄRAV");
+
+        ImageIcon pilt = new ImageIcon("pealkiri.png");
+        Image pildiks = pilt.getImage();
+        Image suurusMuudetud = pildiks.getScaledInstance((int)(600*xSuhe), (int)(150*ySuhe), Image.SCALE_SMOOTH);
+        pealkirjaSilt = new JLabel(new ImageIcon(suurusMuudetud));
+
         pealkirjaSilt.setForeground(Color.white); // Probleem, kui muudan paneeli valgeks ja teksti mustaks - ei kuva
         pealkirjaSilt.setFont(pealkirjaFont);
 
         algusNupuPaneel = new JPanel();
-        algusNupuPaneel.setBounds(300, 400, 200, 100); // 480, 280, 320, 120
+        algusNupuPaneel.setBounds((int)(300*xSuhe), (int)(500*ySuhe), (int)(200*xSuhe), (int)(100*ySuhe)); // 480, 280, 320, 120
         algusNupuPaneel.setBackground(Color.black);
 
         algusNupp = new JButton("ALUSTA");
@@ -71,12 +83,12 @@ public class Mäng {
         algusNupuPaneel.setVisible(false);
 
         peamineTekstipaneel = new JPanel();
-        peamineTekstipaneel.setBounds(100, 100, 600, 250);
+        peamineTekstipaneel.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
         peamineTekstipaneel.setBackground(Color.black);
         konteiner.add(peamineTekstipaneel);
 
         peamineTekstiRuum = new JTextArea();
-        peamineTekstiRuum.setBounds(100, 100, 600, 250);
+        peamineTekstiRuum.setBounds((int)(60*xSuhe), (int)(200*ySuhe), (int)(600*xSuhe), (int)(100*ySuhe));
         peamineTekstiRuum.setBackground(Color.black);
         peamineTekstiRuum.setForeground(Color.white);
         peamineTekstiRuum.setFont(tavalineFont);
@@ -84,7 +96,7 @@ public class Mäng {
         peamineTekstipaneel.add(peamineTekstiRuum);
 
         valikunupuPaneel = new JPanel();
-        valikunupuPaneel.setBounds(250, 350, 300, 150);
+        valikunupuPaneel.setBounds((int)(60*xSuhe), (int)(400*ySuhe), (int)(300*xSuhe), (int)(150*ySuhe));
         valikunupuPaneel.setBackground(Color.black);
         valikunupuPaneel.setLayout(new GridLayout(4, 1));
         konteiner.add(valikunupuPaneel);
@@ -126,7 +138,7 @@ public class Mäng {
         valik4.setActionCommand("v4");
 
         mängijaPaneel = new JPanel();
-        mängijaPaneel.setBounds(100, 15, 600, 50);
+        mängijaPaneel.setBounds((int)(150*xSuhe), (int)(15*ySuhe), (int)(600*xSuhe), (int)(50*ySuhe));
         mängijaPaneel.setBackground(Color.black);
         mängijaPaneel.setLayout(new GridLayout(1, 4));
         konteiner.add(mängijaPaneel);

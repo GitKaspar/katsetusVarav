@@ -1,3 +1,5 @@
+// Õppis RyiSnow YouTube'i mänguarendus õpetuste järgi: https://youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

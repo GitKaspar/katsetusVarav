@@ -14,11 +14,11 @@ public class Mäng {
     Container konteiner; // Sisaldab paneele.
     JPanel pealkirjaPaneel, algusNupuPaneel, peamineTekstipaneel, valikunupuPaneel, mängijaPaneel, pildiPaneel;
     JLabel pealkirjaSilt, hpSilt, hpSildiNumber, relvaSilt, relvaSildiNimi, pildiSilt;
-    Font pealkirjaFont = new Font("Comic Sans MS", Font.PLAIN, 90);
+    Font pealkirjaFont = new Font("Comic Sans MS", Font.PLAIN, 40);
     Font tavalineFont = new Font("Comic Sans MS", Font.PLAIN, 28);
     JButton algusNupp, valik1, valik2, valik3, valik4; // Mänguakna nupud
     JTextArea peamineTekstiRuum;
-    int mängijaHP, koletiseHP, hõbesõrmus, kõrgus, laius;
+    int mängijaHP, koletiseHP, draakoniSarv, kõrgus, laius;
     double xSuhe, ySuhe; // Nende muutujate järgi seatakse kasutajaliidese elementide suurus
     String relv, asukoht; // Asukoha muutuja on sündmuste puhul hiljem tähtis.
 
@@ -58,25 +58,25 @@ public class Mäng {
         konteiner = mänguAken.getContentPane();
 
         pealkirjaPaneel = new JPanel();
-        pealkirjaPaneel.setBounds((int) (100 * xSuhe), (int) (100 * ySuhe), (int) (600 * xSuhe), (int) (150 * ySuhe)); // x ja y märgivad paneeli alguspunkti
+        pealkirjaPaneel.setBounds((int) (100 * xSuhe), (int) (100 * ySuhe), (int) (600 * xSuhe), (int) (230 * ySuhe)); // x ja y märgivad paneeli alguspunkti
         pealkirjaPaneel.setBackground(Color.black);
 
         ImageIcon pilt = new ImageIcon("pealkiri.png");
         Image pildiks = pilt.getImage();
-        Image suurusMuudetud = pildiks.getScaledInstance((int) (600 * xSuhe), (int) (150 * ySuhe), Image.SCALE_SMOOTH);
+        Image suurusMuudetud = pildiks.getScaledInstance((int) (500 * xSuhe), (int) (230 * ySuhe), Image.SCALE_SMOOTH);
         pealkirjaSilt = new JLabel(new ImageIcon(suurusMuudetud));
 
         pealkirjaSilt.setForeground(Color.white);
         pealkirjaSilt.setFont(pealkirjaFont);
 
         algusNupuPaneel = new JPanel();
-        algusNupuPaneel.setBounds((int) (300 * xSuhe), (int) (500 * ySuhe), (int) (200 * xSuhe), (int) (100 * ySuhe));
+        algusNupuPaneel.setBounds((int) (300 * xSuhe), (int) (350 * ySuhe), (int) (200 * xSuhe), (int) (100 * ySuhe));
         algusNupuPaneel.setBackground(Color.black);
 
         algusNupp = new JButton("ALUSTA");
         algusNupp.setBackground(Color.black);
         algusNupp.setForeground(Color.white);
-        algusNupp.setFont(tavalineFont);
+        algusNupp.setFont(pealkirjaFont);
         algusNupp.addActionListener(peKäsitleja);
         algusNupp.setFocusPainted(false);
 
@@ -159,7 +159,7 @@ public class Mäng {
 
         // Järgneb mängijapaneel, kus kuvatakse elud ja relv.
         mängijaPaneel = new JPanel();
-        mängijaPaneel.setBounds((int) (150 * xSuhe), (int) (15 * ySuhe), (int) (600 * xSuhe), (int) (50 * ySuhe));
+        mängijaPaneel.setBounds((int) (120 * xSuhe), (int) (15 * ySuhe), (int) (600 * xSuhe), (int) (50 * ySuhe));
         mängijaPaneel.setBackground(Color.black);
         mängijaPaneel.setLayout(new GridLayout(1, 4));
         konteiner.add(mängijaPaneel);
@@ -204,9 +204,9 @@ public class Mäng {
      * Edasi kulgeb mäng vastavalt sellele, milliseid nuppe mängija erinevates meetodites vajutab.
      */
     public void mängijaEttevalmistus() {
-        mängijaHP = 15;
+        mängijaHP = 10;
         koletiseHP = 20;
-        relv = "Nuga";
+        relv = "Roostes puss";
         relvaSildiNimi.setText(relv);
         hpSildiNumber.setText(String.valueOf(mängijaHP));
 
@@ -215,7 +215,7 @@ public class Mäng {
 
     public void linnaVärav() {
         asukoht = "linnaVärav";
-        peamineTekstiRuum.setText("Sa oled linnavärava ees.\nÜks valvur seisab su ees.\nMida sa teed?");
+        peamineTekstiRuum.setText("Leiad end linnavärava eest.\nVäravat valvab turvises mees.\nMida sa teed?");
         valik1.setVisible(true);
         valik2.setVisible(true);
         valik3.setVisible(true);
@@ -228,7 +228,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -240,7 +240,7 @@ public class Mäng {
 
     public void räägiValvuriga() {
         asukoht = "räägiValvuriga";
-        peamineTekstiRuum.setText("Valvur: Terekest!\nSinusugust ma küll varem siinkandis näinud ei ole.\nVabandan, aga meil ei lubata võõraid linna.");
+        peamineTekstiRuum.setText("Valvur: Seis!\nSinusugust ma küll varem siinkandis näinud ei ole.\nVõõraid meil linna ei lubata.");
         valik1.setText("Jätka.");
         valik2.setVisible(false);
         valik3.setVisible(false);
@@ -249,7 +249,7 @@ public class Mäng {
 
     public void ründaValvurit() {
         asukoht = "ründaValvurit";
-        peamineTekstiRuum.setText("Valvur: Ära ole rumal!\nValvur osutas vastupanu ja andis sulle tugeva hoobi.\n(Sa kannatad 3 puntki kahju.)");
+        peamineTekstiRuum.setText("Valvur: Mäsasja!?\nValvur osutas vastupanu\nja andis sulle tugeva hoobi.\n(Sa kannatad 3 puntki kahju.)");
         mängijaHP = mängijaHP - 3;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Jätka.");
@@ -279,7 +279,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -289,7 +289,7 @@ public class Mäng {
 
     public void põhi() {
         asukoht = "põhi";
-        peamineTekstiRuum.setText("Jõuad jõe äärde. Jood vett ja puhkad jõekaldal.\n(Su elujõud taastub kahe võrra.)");
+        peamineTekstiRuum.setText("Leiad end virsikuaiast.\nNopid puu otsast mahlaka helendava virsiku.\n(Su elujõud taastub kahe võrra.)");
         mängijaHP = mängijaHP + 2;
         hpSildiNumber.setText(String.valueOf(mängijaHP));
         valik1.setText("Naase ristteele.");
@@ -303,7 +303,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -312,8 +312,8 @@ public class Mäng {
     // Siit saab mõõga, mis aitab koletist alistada.
     public void ida() {
         asukoht = "ida";
-        peamineTekstiRuum.setText("Sattusid metsa ja leidsid mõõga.\n(Sain enda valdusesse uue relva: mõõk.)");
-        relv = "Mõõk";
+        peamineTekstiRuum.setText("Leiad end padrikust.\nAvastad päikesevalguses helkiva mõõga.\n(Said enda valdusesse uue relva: mõõk)");
+        relv = "Maagiline mõõk";
         relvaSildiNimi.setText(relv);
         valik1.setText("Naase ristteele.");
         valik2.setVisible(false);
@@ -326,7 +326,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -335,7 +335,7 @@ public class Mäng {
     // Siin on koletis, kellega peab võitlema.
     public void lääs() {
         asukoht = "lääs";
-        peamineTekstiRuum.setText("Juhtud kokku mäekolliga.");
+        peamineTekstiRuum.setText("Jõuad mäe jalamile, mida valvab kohutav draakon.\nKuidas jätkad?");
         valik1.setText("Võitle.");
         valik2.setText("Põgene.");
         valik3.setVisible(false);
@@ -347,7 +347,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -356,7 +356,7 @@ public class Mäng {
 
     public void võitle() {
         asukoht = "võitlus";
-        peamineTekstiRuum.setText("Mäekolli elud: " + koletiseHP + "\nMida sa peale hakkad?");
+        peamineTekstiRuum.setText("Draakoni HP: " + koletiseHP + "\nMida sa peale hakkad?");
         valik1.setText("Ründa.");
         valik2.setVisible(true);
         valik2.setText("Põgene.");
@@ -368,12 +368,12 @@ public class Mäng {
         asukoht = "mängijaRündab";
 
         int mängijaKahju = 0;
-        if (relv.equals("Nuga")) {
+        if (relv.equals("Roostes puss")) {
             mängijaKahju = new Random().nextInt(3);
-        } else if (relv.equals("Mõõk")) {
+        } else if (relv.equals("Maagiline mõõk")) {
             mängijaKahju = new Random().nextInt(12);
         }
-        peamineTekstiRuum.setText("Ründasid mäekolli ja mäekoll kannatas " + mängijaKahju + " punkti kahju.");
+        peamineTekstiRuum.setText("Ründasid draakonit ja ta kannatas " + mängijaKahju + " punkti kahju.");
 
         koletiseHP = koletiseHP - mängijaKahju;
 
@@ -406,8 +406,8 @@ public class Mäng {
      */
     public void võit() {
         asukoht = "võit";
-        peamineTekstiRuum.setText("Alistasid koletise.\nLeiad koletise korjuselt sõrmuse.\n\n(Omandasid hõbedase sõrmuse.)");
-        hõbesõrmus = 1;
+        peamineTekstiRuum.setText("Alistasid koletise.\nTeo tõestuseks raiud elukalt maha sarve.\n\n(Omandasid draakoni sarve.)");
+        draakoniSarv = 1;
         valik1.setText("Naase ristteele.");
         valik2.setVisible(false);
         valik3.setVisible(false);
@@ -432,7 +432,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -441,7 +441,7 @@ public class Mäng {
     // Eduka lõpu meetod.
     public void lõpp() {
         asukoht = "lõpp";
-        peamineTekstiRuum.setText("Valvur: Sul on sõrmus! Alistasid sa mäekolli?\nLinnapea tahab sind kindlasti selle eest permeerida. Järgne mulle.\n(Valvur avab värava ja juhatab su linna.)\nMÄNG LÄBI");
+        peamineTekstiRuum.setText("Valvur: Kae sarve! Sina alistasid draakoni!?\nLinnapea tahab kindlasti sind permeerida.\nTule minuga.\n(Valvur avab värava ja juhatab su linna.)\nMÄNG LÄBI");
         valik1.setVisible(false);
         valik2.setVisible(false);
         valik3.setVisible(false);
@@ -453,7 +453,7 @@ public class Mäng {
         pildiSilt = new JLabel(new ImageIcon(kohandatudPilt));
 
         pildiPaneel = new JPanel();
-        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (350 * ySuhe)); // 480, 280, 320, 120
+        pildiPaneel.setBounds((int) (400 * xSuhe), (int) (90 * ySuhe), (int) (350 * xSuhe), (int) (400 * ySuhe)); // 480, 280, 320, 120
         pildiPaneel.setBackground(Color.black);
         pildiPaneel.add(pildiSilt);
         konteiner.add(pildiPaneel);
@@ -484,7 +484,7 @@ public class Mäng {
                 case "linnaVärav" -> {
                     switch (sinuValik) {
                         case "v1" -> {
-                            if (hõbesõrmus == 1) {
+                            if (draakoniSarv == 1) {
                                 lõpp();
                             } else {
                                 räägiValvuriga();
